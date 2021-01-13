@@ -13,10 +13,10 @@ jobs:
   checkin:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout main
+      - name: Checkout master
         uses: actions/checkout@v2
         with:
-          ref: main
+          ref: master
 
       - name: Set up python
         uses: actions/setup-python@v2
