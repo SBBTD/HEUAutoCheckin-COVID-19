@@ -1,4 +1,4 @@
-# HEUAutoCheckin-COVID-19
+### HEUAutoCheckin-COVID-19
 HEU哈尔滨工程大学平安行动自动打卡，支持多账户、Github Actions和Server酱微信推送。
 
 首先`fork`下来，在`settings`中添加secret，名称为`ACCOUNTS`，内容可通过如下python脚本生成（SCKey设为空串则关闭微信推送，但请勿删除此项，[点此了解SCKey](http://sc.ftqq.com/)）：
