@@ -20,23 +20,35 @@ async def checkin():
             browser = await launcher.launch()
             print('#####################')
             page = await browser.newPage()
+
+            # 登录
             await page.goto('http://one.hrbeu.edu.cn/infoplus/form/JKXXSB/start')
             await page.type('#username', a['usr'])
             await page.type('#password', a['pwd'])
             await page.click('.loginBtn')
             print('[Login]usr:' + a['usr'][:2] + '******' + a['usr'][-2:])
+
+            # 勾选结尾复选框
             await asyncio.sleep(17)
             await page.click('#V1_CTRL82')
             print('[CheckBox]Checked.')
+
+            # 提交表单
             await asyncio.sleep(7)
             await page.click('.command_button_content > nobr')
             print('[Submit]Clicked.')
+
+            # 确认提交
             await asyncio.sleep(7)
             await page.click('.dialog_button.default')
             print('[Confirm]Yes.')
+
+            # 完成提交
             await asyncio.sleep(7)
             await page.click('.dialog_button.default')
             print('[Finish]Done.')
+
+            # 检查结果
             await asyncio.sleep(7)
             if '无需任何操作' in await page.evaluate('document.body.textContent'):
                 print('[Result]OK!')
@@ -45,6 +57,8 @@ async def checkin():
                 print('[Result]Failed!')
                 url = None
             await page.close()
+
+            # 微信推送
             if a['SCKey'] != '':
                 wx = await browser.newPage()
                 if url:
@@ -59,7 +73,6 @@ async def checkin():
             await browser.close()
         except Exception as e:
             print(e)
-        
 
 
 asyncio.get_event_loop().run_until_complete(checkin())
