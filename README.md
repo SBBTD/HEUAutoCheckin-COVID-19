@@ -5,10 +5,10 @@ HEU哈尔滨工程大学平安行动自动打卡，支持多账户、Github Acti
 
 ```
 import json
-json.dumps([
+print(json.dumps([
     {'usr': '20XXXXXXXX', 'pwd': 'YourPassword', 'SCKey': ''},
     {'usr': '20XXXXXXXX', 'pwd': 'YourPassword', 'SCKey': 'SCUxxxxxxxxxxxxxx'},
-])
+]))
 ```
 
 然后去Actions页面执行一次checkin流程，第一次使用会有很多安全提示，成功执行一次后则会每天7:00自动执行。
